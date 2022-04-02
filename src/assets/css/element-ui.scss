@@ -1,0 +1,22 @@
+// cover some element-ui styles
+// 覆盖表单的部分样式
+
+//表单
+.el-form{
+  .el-form-item {
+    .el-form-item__label {
+      font-size: 14px;
+    }
+
+    .el-input-number--small {
+      width: 100%;
+    }
+  }
+
+
+}
+
+.el-button>span{
+  font-family: Hannotate SC;
+
+}

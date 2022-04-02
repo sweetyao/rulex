@@ -1,5 +1,5 @@
 const state = {
-  configFlag: false
+  configFlag: true
 }
 
 const actions = {

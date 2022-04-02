@@ -5,6 +5,9 @@ import router from './router/index'
 import store from './store/index'
 import App from './App.vue'
 
+import './assets/css/index.scss';
+import './assets/css/element-ui.scss';
+
 
 router.beforeEach((to, from ,next) => {
   const username = store.getters.user.username

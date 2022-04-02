@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: Hannotate SC;
+  src: url('../font/Hannotate SC Regular.ttf');
+}
+
+html,
+body,
+#app{
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font: 400 14px/1.5 Hannotate SC, MicrosoftYaHei, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+  Microsoft YaHei, Arial, sans-serif;
+  word-wrap: break-word;
+}
+
+a {
+  text-decoration: none
+}
+
+
+/* 设置滚动条的样式 */
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 6px;    /*对垂直流动条有效*/
+  height: 6px;   /*对水平流动条有效*/
+}
+
+/* 滚动条滑块 */
+/*定义滑块颜色、内阴影及圆角*/
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* 外层轨道*/
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+::-webkit-scrollbar-track {
+  background: 0 0;
+}
+
+
