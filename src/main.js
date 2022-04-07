@@ -8,6 +8,8 @@ import App from './App.vue'
 import './assets/css/index.scss';
 import './assets/css/element-ui.scss';
 
+// 需要全局引入再添加
+import SvgIcon from './components/SvgIcon.vue' // 全局svg图标组件
 
 router.beforeEach((to, from ,next) => {
   const username = store.getters.user.username
@@ -32,6 +34,7 @@ app.use(ElementPlus, {
   zIndex: 3000
 }).use(store)
   .use(router)
+  .component('svg-icon', SvgIcon)
   .mount('#app')
 
 
