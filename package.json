@@ -17,7 +17,9 @@
   "devDependencies": {
     "@types/node": "^17.0.23",
     "@vitejs/plugin-vue": "^2.2.0",
+    "axios": "^0.26.1",
     "js-cookie": "^3.0.1",
+    "qs": "^6.10.3",
     "sass": "^1.49.10",
     "sass-loader": "^12.6.0",
     "svg-sprite-loader": "^6.0.11",

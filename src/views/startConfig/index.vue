@@ -38,22 +38,39 @@
 </template>
 
 <script>
+
+  import {reactive, toRefs} from "vue";
+
   export default {
     name: "index",
-    data() {
+    setup() {
+      const state = reactive({
+        form: {
+          host: null
+        }
+      })
       return {
-        form: {}
+        ...toRefs(state)
       }
-
     },
     methods: {
-      init() {
-        this.$store.dispatch('setConfig', true)
-        this.$router.push(({path: '/login'}))
-
+      async init() {
+        this.$store.dispatch('setConfig', true);
+        this.$router.push(({path: '/login'}));
+        // try {
+        //   const res = await this.$axios.home.initDb(this.form);
+        //   if (res.success) {
+        //     this.$store.dispatch('setConfig', true);
+        //     this.$router.push(({path: '/login'}));
+        //     ElMessage.success(res.message)
+        //   } else {
+        //     ElMessage.error(res.message)
+        //   }
+        // } catch (err) {
+        //
+        // }
       }
     }
-
   }
 </script>
 

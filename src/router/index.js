@@ -20,9 +20,29 @@ const routes = [{
     name: 'Dashboard',
     meta: {
       title: '首页'
-
     },
     component: () => import('../views/dashboard/index.vue')
+  }, {
+    path: '/task',
+    name: 'Task',
+    meta: {
+      title: '任务'
+    },
+    component: () => import('../views/task/index.vue')
+  }, {
+    path: '/database',
+    name: 'Database',
+    meta: {
+      title: '数据源'
+    },
+    component: () => import('../views/database/index.vue')
+  }, {
+    path: '/library',
+    name: 'Library',
+    meta: {
+      title: '用例库'
+    },
+    component: () => import('../views/library/index.vue')
   }]
 },{
   path: '/404',

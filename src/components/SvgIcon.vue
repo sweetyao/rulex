@@ -1,5 +1,5 @@
 <template>
-  <el-tooltip :disabled="tooltip !== ''" :content="tooltip" placement="bottom" effect="light">
+  <el-tooltip :disabled="tooltip === ''" :content="tooltip" placement="bottom" effect="light">
     <svg :class="svgClass" aria-hidden="true">
       <use :xlink:href="iconName"/>
     </svg>
@@ -33,7 +33,7 @@
   });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .svg-icon {
     width: 1.2em;
     height: 1.2em;

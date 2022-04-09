@@ -13,7 +13,7 @@
         </el-form-item>
       </el-form>
       <div style="display: flex; justify-content: flex-end;">
-        <el-button @click="jumptohome">登录</el-button>
+        <el-button @click="login">登录</el-button>
       </div>
 
     </div>
@@ -23,18 +23,32 @@
 </template>
 
 <script>
+  import {reactive, toRefs} from "vue";
+
   export default {
     name: "login",
-    data(){
-      return {
+    setup(){
+      const state = reactive({
         form: {}
+      })
+      return {
+        ...toRefs(state)
       }
-
     },
     methods: {
-      jumptohome() {
-        this.$store.dispatch('setUserInfo', {username: 'sswl'})
-        this.$router.push({path: '/dashboard'})
+      async login(){
+        try {
+          const res = await this.$axios.user.login(this.form);
+          if (res.success) {
+            this.$store.dispatch('setUserInfo', this.form)
+            this.$store.dispatch('setToken', res.data.token)
+            this.$router.push({path: '/'})
+            ElMessage.success(res.message)
+          } else {
+            ElMessage.error(res.message)
+          }
+        } catch (err) {
+        }
       }
     }
   }

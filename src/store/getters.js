@@ -1,8 +1,9 @@
 const getters = {
   user: state => state.user.user,
-  startConfig: state => state.startConfig.configFlag,
+  configFlag: state => state.startConfig.configFlag,
   included: state => state.include.included,
   collapse: state => state.app.collapse,
+  token: state => state.app.token,
 }
 
 export default  getters
