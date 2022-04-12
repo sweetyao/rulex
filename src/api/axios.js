@@ -10,7 +10,6 @@ const instance = axios.create({
   withCredentials: true
 });
 
-// const token = store.getters.token;
 
 
 // 添加请求拦截器

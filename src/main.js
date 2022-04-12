@@ -19,11 +19,14 @@ import SvgIcon from './components/SvgIcon.vue' // 全局svg图标组件
 store.dispatch('getConfig')
 
 router.beforeEach((to, from ,next) => {
-  const username = store.getters.user.username
-  const configFlag = store.getters.configFlag
+  const username = store.getters.user.username;
+  const configFlag = store.getters.configFlag;
   if(!configFlag && to.path !== '/startConfig'){
     next('/startConfig')
-  }else if(configFlag && !username && to.path !== '/login'){
+  }else if(configFlag && !username && ['/login', '/register'].includes(to.path)){
+    console.log(44, to.path)
+    next()
+  }else if(configFlag && !username && !['/login', '/register'].includes(to.path)){
     next('/login')
   }else{
     if(configFlag && to.path === '/startConfig' || configFlag && username && to.path === '/login'){

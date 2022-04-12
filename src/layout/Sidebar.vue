@@ -53,7 +53,6 @@
 
 
       const route = useRoute();
-      console.log(route , route.path)
 
       const onRoutes = computed(() => {
         return route.path;
