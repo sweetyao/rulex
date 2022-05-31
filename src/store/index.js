@@ -16,7 +16,7 @@ const store = new Vuex.Store({
   },
   getters,
   strict: debug,
-  plugins: [createPersistedState({paths: ['user', 'startConfig']})]
+  plugins: [createPersistedState({paths: ['app']})]
 
 })
 

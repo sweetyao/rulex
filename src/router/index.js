@@ -47,6 +47,13 @@ const routes = [{
       title: '用例库'
     },
     component: () => import('../views/library/index.vue')
+  },{
+    path: '/env',
+    name: 'Env',
+    meta: {
+      title: '环境'
+    },
+    component: () => import('../views/env/index.vue')
   }]
 },{
   path: '/404',

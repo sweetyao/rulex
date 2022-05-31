@@ -12,10 +12,15 @@ export default defineConfig({
     port: 3000,
     open: true,
     proxy: {
-      '/dev': {
+      '/api': {
         // target: 'http://sqm.test.com/sqm',
-        target: 'http://192.168.64.220:8080/sqm',
-      }
+        // target: 'http://192.168.64.220:8080/sqm',
+        // target: 'http://172.16.0.10:8000',
+        target: 'http://192.168.64.221:8000/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      },
+
     }
 
   },

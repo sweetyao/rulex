@@ -1,7 +1,9 @@
 import Cookies from 'js-cookie';
+import api from '@/api'
 const state = {
-  collapse: true,
-  token: ''
+  collapse: false,
+  token: '',
+  envs: []
 }
 
 const actions = {
@@ -10,16 +12,37 @@ const actions = {
   },
   setToken( {commit}, data){
     commit('setToken', data)
+  },
+  setEnv( {commit}, data){
+    commit('setEnv', data)
+  },
+  async getEnv({commit}, data){
+    try {
+      const res = await api.home.getEnvs(data);
+      if (res.success) {
+        commit('setEnv', res.data);
+      } else {
+        ElMessage.error(res.message)
+      }
+      return Promise.resolve(res);
+    } catch (err) {
+      return Promise.reject(err);
+    }
+
   }
 }
 
 const mutations = {
-  toggleSidebar({ commit }, data) {
-    this.collapse = data
+  toggleSidebar(state, data) {
+    state.collapse = data
     // Cookies.set('sidebarStatus', data);
   },
-  setToken({commit}, data){
-    this.token = data
+  setToken(state, data){
+    state.token = data
+  },
+  setEnv(state, data){
+    state.envs = data
+
   }
 }
 

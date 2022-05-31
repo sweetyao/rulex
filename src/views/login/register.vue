@@ -59,24 +59,24 @@
     methods: {
       // 注册
       async register() {
-        this.$router.push({path: '/login'})
-        // this.$refs.registerForm.validate(async valid => {
-        //   if (valid) {
-        //     try {
-        //       const res = await this.$axios.home.register(this.form);
-        //       if (res.success) {
-        //         this.$store.dispatch('setToken', res.data.token)
-        //         this.$router.push({path: '/login'})
-        //         ElMessage.success(res.message)
-        //       } else {
-        //         ElMessage.error(res.message)
-        //       }
-        //     } catch (err) {
-        //     }
-        //   } else {
-        //     ElMessage.error('验证不通过')
-        //   }
-        // })
+        // this.$router.push({path: '/login'})
+        this.$refs.registerForm.validate(async valid => {
+          if (valid) {
+            try {
+              const res = await this.$axios.home.register(this.formData);
+              if (res.success) {
+                this.$store.dispatch('setToken', res.data.token)
+                this.$router.push({path: '/login'})
+                ElMessage.success(res.message)
+              } else {
+                ElMessage.error(res.message)
+              }
+            } catch (err) {
+            }
+          } else {
+            ElMessage.error('验证不通过')
+          }
+        })
 
       },
 

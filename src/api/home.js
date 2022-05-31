@@ -19,6 +19,31 @@ export default{
   // 注册
   register(data){
     return axios.post('/register', data);
+  },
+
+  // 获取登录用户的环境
+  getEnvs(params){
+    if(params){
+      return axios.get(`/envs?env_name=${params}`);
+    }else{
+      return axios.get('/envs');
+    }
+
+  },
+
+  //创建环境
+  createEnv(data){
+    return axios.post('/env', data);
+  },
+
+  // 更新环境
+  updateEnv(id, data){
+    return axios.put( `/env/${id}`, data );
+  },
+
+  // 删除环境
+  deleteEnv(id){
+    return axios.delete( `/env/${id}` );
   }
 
 }

@@ -55,20 +55,20 @@
     },
     methods: {
       async init() {
-        this.$store.dispatch('setConfig', true);
-        this.$router.push(({path: '/login'}));
-        // try {
-        //   const res = await this.$axios.home.initDb(this.form);
-        //   if (res.success) {
-        //     this.$store.dispatch('setConfig', true);
-        //     this.$router.push(({path: '/login'}));
-        //     ElMessage.success(res.message)
-        //   } else {
-        //     ElMessage.error(res.message)
-        //   }
-        // } catch (err) {
-        //
-        // }
+        // this.$store.dispatch('setConfig', true);
+        // this.$router.push(({path: '/login'}));
+        try {
+          const res = await this.$axios.home.initDb(this.form);
+          if (res.success) {
+            this.$store.dispatch('setConfig', true);
+            this.$router.push(({path: '/login'}));
+            ElMessage.success(res.message)
+          } else {
+            ElMessage.error(res.message)
+          }
+        } catch (err) {
+
+        }
       }
     }
   }

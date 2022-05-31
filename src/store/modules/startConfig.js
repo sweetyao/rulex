@@ -1,6 +1,6 @@
 import api from '@/api'
 const state = {
-  configFlag: true
+  configFlag: false
 }
 
 const actions = {

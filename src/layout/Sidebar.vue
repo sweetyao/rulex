@@ -1,16 +1,5 @@
 <template>
   <div class="sidebar-container">
-
-    <el-button @click="changeCollapse">
-
-<!--      <el-icon @click="changeCollapse">-->
-<!--        <edit />-->
-<!--        <d-arrow-left v-if="collapse" />-->
-<!--        <d-arrow-right v-else />-->
-<!--      </el-icon>-->
-<!--      <svg-icon :icon-class="collapse ? 'expand' : 'collapse'" @click="changeCollapse" :tooltip="collapse ? 'expand' : 'collapse'" />-->
-      {{collapse ? 'expand' : 'collapse'}}
-    </el-button>
     <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" background-color="#324157"
              text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
       <template v-for="item in items" :key="item.index">
@@ -20,13 +9,23 @@
         </el-menu-item>
       </template>
     </el-menu>
+    <div class="sidebar-footer" @click="toggleClick">
+      <div class="icon-wrap">
+        <svg-icon :icon-class="!collapse ? 'collapse' : 'expand'" class="icon" />
+      </div>
+      <transition name="sidebarLogoFade">
+        <span v-if="!collapse" class="text">收起</span>
+      </transition>
+
+    </div>
+
   </div>
 
 
 </template>
 
 <script>
-  import { computed, ref } from "vue";
+  import {computed, reactive, toRefs} from "vue";
   import { useStore } from "vuex";
   import { useRoute } from "vue-router";
 
@@ -59,19 +58,22 @@
       });
 
       const store = useStore();
-      let collapse = ref(true)
-      // const collapse = computed(() => store.state.app.collapse);
+
+      const state = reactive({
+        collapse: store.state.app.collapse
+      })
+      const toggleClick = () => {
+        store.dispatch('app/toggleSidebar', !state.collapse)
+        state.collapse = !state.collapse;
+
+      }
 
       return {
         items,
-        collapse,
-        onRoutes
+        ...toRefs(state),
+        onRoutes,
+        toggleClick
 
-      }
-    },
-    methods: {
-      changeCollapse(){
-        this.collapse = !this.collapse;
       }
     }
   }
@@ -92,10 +94,19 @@
     width: 100px;
   }
   .sidebar-el-menu{
-    height: 100%;
+    height: calc(100% - 60px);;
     color: #fff;
     border: none;
     overflow-y: scroll;
+  }
+  .sidebar-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 60px;
+    border-top: 1px solid #fff;
+
   }
 
 </style>

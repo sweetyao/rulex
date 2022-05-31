@@ -17,8 +17,11 @@ instance.interceptors.request.use(
   // 在发送请求之前做些什么
   config => {
     // 根据请求方法构建请求参数和数据
+    // if(store.getters.token){
+    //   config.headers['Authorization']  = store.getters.token
+    // }
     config.headers = {
-      Authorization: store.getters.token || '',
+      'Authorization': store.getters.token || JSON.parse(localStorage.user).token || '',
       'Content-Type':  'application/json;charset=UTF-8'
     };
     return config;

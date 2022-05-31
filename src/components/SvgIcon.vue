@@ -1,6 +1,6 @@
 <template>
   <el-tooltip :disabled="tooltip === ''" :content="tooltip" placement="bottom" effect="light">
-    <svg :class="svgClass" aria-hidden="true">
+    <svg :class="svgClass" aria-hidden="true"  v-bind="$attrs">
       <use :xlink:href="iconName"/>
     </svg>
   </el-tooltip>

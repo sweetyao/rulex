@@ -5,7 +5,7 @@ const state = {
 }
 
 const actions = {
-  setUserInfo( {commit}, data){
+  setUserInfo({commit}, data){
     commit('setUserInfo', data)
   }
 }

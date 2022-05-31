@@ -5,19 +5,19 @@
     </div>
     <div class="action">
       <div class="action-icon">
-        <svg-icon icon-class="database" />
+        <svg-icon icon-class="database"/>
         <span>资料库</span>
       </div>
       <div class="action-icon">
-        <svg-icon icon-class="notification" />
+        <svg-icon icon-class="notification"/>
         <span>告警</span>
       </div>
-      <div class="action-icon">
-        <svg-icon icon-class="environment" />
+      <div class="action-icon" @click="toEnv">
+        <svg-icon icon-class="environment"/>
         <span>环境</span>
       </div>
       <div class="action-icon">
-        <svg-icon icon-class="user" />
+        <svg-icon icon-class="user"/>
         <span>徐珍珍</span>
       </div>
     </div>
@@ -27,13 +27,25 @@
 </template>
 
 <script>
-    export default {
-        name: "Navbar"
+  import { useRouter } from "vue-router";
+  export default {
+    name: "Navbar",
+    setup(){
+      const router = useRouter();
+      const toEnv = () => {
+        router.push('/env')
+      }
+      return {
+        toEnv
+      }
+
+
     }
+  }
 </script>
 
 <style lang="scss" scoped>
-  .header-container{
+  .header-container {
     height: 50px;
     width: 100vw;
     background: black;
@@ -41,21 +53,26 @@
     justify-content: space-between;
     align-items: center;
     color: #fff;
-    .label{
+
+    .label {
       font-size: 20px;
       margin-left: 10px;
     }
-    .action{
+
+    .action {
       display: flex;
       justify-content: space-between;
-      &-icon{
+
+      &-icon {
         margin-right: 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        span{
-          font-size:12px;
+        cursor: pointer;
+
+        span {
+          font-size: 12px;
         }
 
       }
